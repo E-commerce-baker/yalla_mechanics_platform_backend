@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const { protect } = require('../middleware/auth');
 const mechanicController = require('../controllers/mechanicController');
+const breakdownController = require('../controllers/breakdownController');
 
 // All routes require authentication and 'mechanic' role
 router.use(protect('mechanic'));
@@ -29,5 +30,7 @@ router.post('/notifications/read', mechanicController.markNotificationsRead);
 
 // @route   GET /api/mechanics/reviews
 router.get('/reviews', mechanicController.getReviews);
+
+router.get('/all-breakdowns', breakdownController.getAllBreakdowns);
 
 module.exports = router;
